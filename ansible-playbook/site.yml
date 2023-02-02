@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks: 
+
+  - name: update and upgrade the servers
+    apt:
+      update_cache: yes
+      upgrade: yes
+
+- hosts: all
+  become: true
+  roles:
+    - install_apache
+    - change_timeZone
+    - print_hostname
+#    - restart_apache
